@@ -1,0 +1,53 @@
+{
+	"name": "directus-extension-blur-image-generator",
+	"description": "Creating blurred images for assets with thumbhash and base64 format in Directus.",
+	"version": "1.0.0",
+	"license": "MIT",
+	"author": {
+		"name": "Philipp Winterle",
+		"email": "philipp.winterle@gmail.com"
+	},
+	"keywords": [
+		"directus",
+		"directus-extension",
+		"directus-extension-bundle",
+		"blur image generator",
+		"blurhash",
+		"thumbhash"
+	],
+	"type": "module",
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"directus:extension": {
+		"type": "hook",
+		"path": "dist/index.js",
+		"source": "src/index.ts",
+		"host": "^10.0.0 || ^11.0.0"
+	},
+	"scripts": {
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify",
+		"link": "directus-extension link",
+		"validate": "directus-extension validate"
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "13.0.3",
+		"@directus/storage": "^12.0.0",
+		"@directus/types": "^13.0.0",
+		"@types/node": "^22.13.10",
+		"@types/pino": "^7.0.5",
+		"ansis": "^3.17.0",
+		"blurhash": "^2.0.5",
+		"thumbhash": "^0.1.1",
+		"typescript": "^5.8.2",
+		"vue": "^3.5.13"
+	},
+	"dependencies": {
+		"@jimp/core": "^1.6.0",
+		"@jimp/wasm-webp": "^1.6.0",
+		"@jsquash/webp": "^1.4.0",
+		"jimp": "^1.6.0"
+	}
+}
