@@ -25,17 +25,13 @@ export const generateHashByKey = async({
     stream
   } = await assetsService.getAsset(key, {
     transformationParams: {
+      width: WIDTH,
+      height: HEIGHT,
+      fit: 'fill',
+      withoutEnlargement: true,
       quality: 70,
       format: "jpeg",
       transforms: [
-        [
-          "resize", {
-            width: WIDTH,
-            height: HEIGHT,
-            fit: 'fill',
-            withoutEnlargement: true
-          }
-        ],
         [
           "ensureAlpha",
           1

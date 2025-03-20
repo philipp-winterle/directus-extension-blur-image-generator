@@ -2,7 +2,7 @@ import type { HashAlgorithm } from './types';
 import { defineHook } from '@directus/extensions-sdk';
 import ansis from 'ansis';
 import packageJson from '../package.json' assert { type: 'json' };
-import { validateExistingFields, validateSettings } from './utils/migration';
+import { addFilesFields, addSettingsFields } from './utils/migration';
 import { Logger } from 'pino';
 import { generateHashByKey } from './utils/generate_hash_by_key';
 import { regenerate_hashs } from './utils/regenerate_hashs';
@@ -27,7 +27,14 @@ export default defineHook(async(register, context) => {
     schema: await getSchema(),
   });
 
-  const currentAlgorithm = await context.database('directus_settings').first('blur_image_generator');
+  // Add the settings fields if they don't exist
+  let currentAlgorithm = await addSettingsFields({
+    database,
+    fieldsService,
+    logger
+  });
+
+  logger.info(ansis.yellowBright(`Current Hash algorithm: ${currentAlgorithm}`));
 
   // Validate existing fields
   init("routes.custom.after", async(_meta) => {
@@ -39,14 +46,7 @@ export default defineHook(async(register, context) => {
     });
 
     // Validate existing fields
-    await validateExistingFields({
-      database,
-      fieldsService,
-      logger
-    });
-
-    // Validate settings and get the hash algorithm
-    const hashAlgorithm = await validateSettings({
+    await addFilesFields({
       database,
       fieldsService,
       logger
@@ -58,7 +58,7 @@ export default defineHook(async(register, context) => {
     });
 
     // Regenerate all images if needed
-    await regenerate_hashs(itemsService, assetsService, logger, hashAlgorithm);
+    await regenerate_hashs(itemsService, assetsService, logger, currentAlgorithm);
 
     logger.info(ansis.greenBright('👍🏻  Blur Image Generator is ready to go!'));
   });
@@ -133,5 +133,7 @@ export default defineHook(async(register, context) => {
 
     // Regenerate all images if needed
     await regenerate_hashs(itemsService, assetsService, logger, algorithm, true);
+
+    currentAlgorithm = algorithm;
   });
 });

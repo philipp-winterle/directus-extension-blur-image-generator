@@ -3,7 +3,7 @@ import { FIELDS_TO_ADD, FIELD_HASH_ALGORITHM } from '../meta/fields';
 import ansis from 'ansis';
 import type { HashAlgorithm } from '../types';
 
-export const validateExistingFields = async({
+export const addFilesFields = async({
   database, fieldsService, logger
 }: {
     database: any,
@@ -39,7 +39,7 @@ export const validateExistingFields = async({
  * @param logger - The logger instance
  * @returns The current hash algorithm setting (thumbhash or blurhash)
  */
-export const validateSettings = async({
+export const addSettingsFields = async({
   database, fieldsService, logger
 }: {
   database: any,
