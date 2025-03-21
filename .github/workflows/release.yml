@@ -28,6 +28,10 @@ jobs:
           node-version: "lts/*"
       - name: Install dependencies
         run: npm clean-install
+      - name: Build dist
+        run: npm run build
+      - name: Validate
+        run: npm run validate
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
       - name: Release
