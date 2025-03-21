@@ -2,6 +2,7 @@
 	"name": "directus-extension-blur-image-generator",
 	"description": "Creating blurred images for assets with thumbhash and base64 format in Directus.",
 	"version": "1.0.0",
+	"icon": "extension",
 	"license": "MIT",
 	"author": {
 		"name": "Philipp Winterle",
@@ -10,7 +11,7 @@
 	"keywords": [
 		"directus",
 		"directus-extension",
-		"directus-extension-bundle",
+		"directus-extension-hook",
 		"blur image generator",
 		"blurhash",
 		"thumbhash"
@@ -24,7 +25,7 @@
 		"type": "hook",
 		"path": "dist/index.js",
 		"source": "src/index.ts",
-		"host": "^10.0.0 || ^11.0.0"
+		"host": "^11.0.0"
 	},
 	"scripts": {
 		"build": "directus-extension build",
