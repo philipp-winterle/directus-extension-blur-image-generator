@@ -2,6 +2,7 @@ import type { Logger } from 'pino';
 import { generateHashByKey } from './generate_hash_by_key';
 import { FIELD_IMG_HASH } from '../meta/fields';
 import type { HashAlgorithm } from '../types';
+import ansis from 'ansis';
 
 const FIELD_IMG_HASH_NAME = FIELD_IMG_HASH.field;
 
@@ -19,7 +20,7 @@ export async function regenerate_hashs(
   hashAlgorithm: HashAlgorithm = 'thumbhash',
   force = false
 ) {
-  logger.info(`Regenerating hashes${force ? " forced" : ""}...`);
+  logger.info(ansis.yellowBright(`Regenerating hashes${force ? " forced" : ""}...`));
 
   const filter = {
     _and: [
@@ -49,7 +50,7 @@ export async function regenerate_hashs(
     limit: -1,
   });
 
-  logger.info(`Total files to regenerate: ${files.length}`);
+  logger.info(ansis.yellowBright(`Total files to regenerate: ${files.length}`));
 
   for (const file of files) {
     try {
@@ -64,10 +65,10 @@ export async function regenerate_hashs(
       };
 
       await itemsService.updateOne(file["id"], updateData);
-      logger.info(`Generated Hash [${file["id"]}]`);
+      logger.info(ansis.greenBright(`Generated Hash [${file["id"]}]`));
     } catch (error) {
       logger.error(
-        `Regeneration Error [${file["id"]}]: ${error}`,
+        ansis.redBright(`Regeneration Error [${file["id"]}]: ${error}`),
       );
     }
   }
