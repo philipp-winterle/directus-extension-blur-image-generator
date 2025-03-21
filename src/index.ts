@@ -131,7 +131,7 @@ export default defineHook(async(register, context) => {
       accountability
     });
 
-    // Regenerate all images if needed
+    // Regenerate all images on selection of a new algorithm
     await regenerate_hashs(itemsService, assetsService, logger, algorithm, true);
 
     currentAlgorithm = algorithm;
