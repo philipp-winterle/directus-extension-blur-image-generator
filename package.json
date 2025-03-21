@@ -4,6 +4,10 @@
 	"version": "1.0.0",
 	"icon": "extension",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/philipp-winterle/directus-extension-blur-image-generator.git"
+	},
 	"author": {
 		"name": "Philipp Winterle",
 		"email": "philipp.winterle@gmail.com"
@@ -17,6 +21,13 @@
 		"thumbhash"
 	],
 	"type": "module",
+	"release": {
+		"tagFormat": "v${version}",
+		"branches": [
+			"main",
+			"next"
+		]
+	},
 	"files": [
 		"dist",
 		"README.md"
@@ -37,14 +48,15 @@
 		"@directus/extensions-sdk": "13.0.3",
 		"@directus/storage": "^12.0.0",
 		"@directus/types": "^13.0.0",
-    "@jimp/core": "^1.6.0",
+		"@jimp/core": "^1.6.0",
 		"@jimp/wasm-webp": "^1.6.0",
 		"@jsquash/webp": "^1.4.0",
 		"@types/node": "^22.13.10",
 		"@types/pino": "^7.0.5",
 		"ansis": "^3.17.0",
 		"blurhash": "^2.0.5",
-    "jimp": "^1.6.0",
+		"jimp": "^1.6.0",
+		"semantic-release": "^24.2.3",
 		"thumbhash": "^0.1.1",
 		"typescript": "^5.8.2",
 		"vue": "^3.5.13"
