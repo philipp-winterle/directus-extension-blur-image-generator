@@ -7,7 +7,7 @@ import { Logger } from 'pino';
 import { generateHashByKey } from './utils/generate_hash_by_key';
 import { regenerate_hashs } from './utils/regenerate_hashs';
 
-const EXTENSION_NAME = ansis.ansi256(135)(`[ ${packageJson.name.replaceAll("-", " ").toUpperCase()} ] `);
+const EXTENSION_NAME = ansis.fg(135)(`[ ${packageJson.name.replaceAll("-", " ").toUpperCase()} ] `);
 
 export default defineHook(async(register, context) => {
   const { action, init } = register;
