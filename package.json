@@ -71,7 +71,7 @@
 		"upgrade": "npx npm-check-updates --interactive --format group"
 	},
 	"devDependencies": {
-		"@directus/extensions-sdk": "13.0.4",
+		"@directus/extensions-sdk": "14.0.0",
 		"@directus/storage": "^12.0.0",
 		"@directus/types": "^13.1.0",
 		"@jimp/core": "^1.6.0",
