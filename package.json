@@ -1,7 +1,7 @@
 {
 	"name": "directus-extension-blur-image-generator",
 	"description": "Creating blurred images for assets with thumbhash and base64 format in Directus.",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"icon": "extension",
 	"license": "MIT",
 	"repository": {
